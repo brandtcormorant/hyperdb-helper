@@ -25,5 +25,8 @@
     "hyperdb": "^4.5.1",
     "hyperschema": "^1.1.1",
     "mri": "^1.2.0"
+  },
+  "devDependencies": {
+    "corestore": "^6.18.4"
   }
 }

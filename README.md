@@ -2,7 +2,9 @@
 
 > Generate & build hyperdb schema definitions
 
-Try it out:
+## Try it out real good
+
+Inside your current working directory this create a `schemas` directory with all the necessary files and an example `index.js` file showing Hyperdb usage with the provided schemas.
 
 ```js
 // Create the files!
@@ -18,12 +20,18 @@ npx hyperdb-helper build
 node index.js
 ```
 
-This wil use the current working directory to create a `schemas` directory with all the necessary files.
+## Make it official
 
-Install:
+Install as a dev dependency:
 
 ```
 npm i -D hyperdb-helper
+```
+
+Remember to install these dependencies if you haven't already:
+
+```
+npm i hyperdb hyperschema corestore
 ```
 
 Add a build script to your package.json:
@@ -34,7 +42,7 @@ Add a build script to your package.json:
 }
 ```
 
-## init your future
+## To init your future
 
 After running the `hyperdb-helper init` command you'll get some examples to learn from in the generated files:
 
@@ -43,10 +51,9 @@ After running the `hyperdb-helper init` command you'll get some examples to lear
 
 If you don't already have hyperdb and hyperschema installed you'll be asked to do so.
 
-
-## the work is never done, so to do
+## The work is never done, never forget
 
 - by default run init without all the example code, provide --examples flag
 - make sure the build command isn't a leaky abstraction
 - make map & trigger examples
-- write help cmd text
+- improve help cmd text

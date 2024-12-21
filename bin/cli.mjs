@@ -25,9 +25,6 @@ const defaultConfig = {
 const flags = mri(process.argv.slice(2), {
   alias: {
     help: 'h'
-  },
-  default: {
-
   }
 })
 
@@ -35,7 +32,22 @@ const args = flags._
 const cmd = args.shift()
 
 if (!cmd || cmd === 'help' || flags.help) {
-  const message = dedent``
+  const message = dedent`
+    # hyperdb-helper
+
+    Generate and build HyperDB schemas
+
+    Usage:
+      hyperdb-helper <command> [options]
+
+    Commands:
+      init [dir]     Initialize schema directory (default: ./schemas)
+      build [dir]    Build database from schemas
+      help           Show this help
+
+    Options:
+      -h, --help     Show this help
+  `
   console.log(message)
 }
 
@@ -48,7 +60,7 @@ switch (cmd) {
 
     if (toInstall.length) {
       console.log(dedent`
-        Please install the following dependencies:
+        Please install the required dependencies using npm:
 
         npm install ${toInstall.join(' ')}
       `)
@@ -58,6 +70,17 @@ switch (cmd) {
   }
 
   case 'build': {
+    try {
+      await fs.access(config.schemaConfigDirectory)
+    } catch (error) {
+      console.error(dedent`
+        Error: Schema directory not found at ${config.schemaConfigDirectory}
+        Run 'hyperdb-helper init' to create a new schema directory
+      `)
+
+      process.exit(1)
+    }
+
     const schemasModule = await getSchemasModule(config.schemasFilepath)
     await build(config, schemasModule)
     break
