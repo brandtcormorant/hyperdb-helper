@@ -1,6 +1,6 @@
 # hyperdb-helper
 
-> Generate & build hyperdb schema definitions
+> Generate & build [hyperdb](https://github.com/holepunchto/hyperdb) schema definitions
 
 ## Try it out real good
 
