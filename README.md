@@ -4,9 +4,18 @@
 
 Try it out:
 
-```
+```js
+// Create the files!
 npx hyperdb-helper init
+
+// Install the dependencies!
+npm install hyperdb hyperschema corestore
+
+// Build the schema definitions!
 npx hyperdb-helper build
+
+// Run the example code!
+node index.js
 ```
 
 This wil use the current working directory to create a `schemas` directory with all the necessary files.
