@@ -6,7 +6,7 @@
 
 Inside your current working directory this create a `schemas` directory with all the necessary files and an example `index.js` file showing Hyperdb usage with the provided schemas.
 
-```js
+```
 // Create the files!
 npx hyperdb-helper init
 
