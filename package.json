@@ -1,6 +1,6 @@
 {
   "name": "hyperdb-helper",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "A wee little helper cli for working with hyperdb schemas",
   "bin": {
     "hyperdb-helper": "bin/cli.js"
