@@ -3,7 +3,7 @@
   "version": "0.0.2",
   "description": "A wee little helper cli for working with hyperdb schemas",
   "bin": {
-    "hyperdb-helper": "./bin/cli.js"
+    "hyperdb-helper": "bin/cli.js"
   },
   "repository": {
     "type": "git",
