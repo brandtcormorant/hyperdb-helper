@@ -1,0 +1,29 @@
+{
+  "name": "hyperdb-helper",
+  "version": "0.0.0",
+  "description": "A wee little helper cli for working with hyperdb schemas",
+  "bin": {
+    "hyperdb-helper": "bin/cli.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brandtcormorant/hyperdb-helper.git"
+  },
+  "keywords": [
+    "hyperdb",
+    "hyperbee",
+    "hypercore"
+  ],
+  "author": "brandtcormorant",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/brandtcormorant/hyperdb-helper/issues"
+  },
+  "homepage": "https://github.com/brandtcormorant/hyperdb-helper#readme",
+  "dependencies": {
+    "dedent": "^1.5.3",
+    "hyperdb": "^4.5.1",
+    "hyperschema": "^1.1.1",
+    "mri": "^1.2.0"
+  }
+}
