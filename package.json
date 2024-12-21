@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/brandtcormorant/hyperdb-helper#readme",
   "dependencies": {
+    "corestore": "^6.18.4",
     "dedent": "^1.5.3",
     "hyperdb": "^4.5.1",
     "hyperschema": "^1.1.1",

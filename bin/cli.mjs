@@ -44,7 +44,7 @@ const config = await mergeConfig(args.shift())
 switch (cmd) {
   case 'init': {
     await createDefaultFiles(config)
-    const toInstall = checkPackageDependencies(config.package, ['hyperschema', 'hyperdb'])
+    const toInstall = checkPackageDependencies(config.package, ['hyperschema', 'hyperdb', 'corestore'])
 
     if (toInstall.length) {
       console.log(dedent`
@@ -95,8 +95,6 @@ async function mergeConfig (filepath) {
   config.generatedSchemaDirectory = getFilepathFromConfig(config, 'generatedSchemaDirectory', 'schema')
   config.generatedDatabaseDirectory = getFilepathFromConfig(config, 'generatedDatabaseDirectory', 'database')
 
-  console.log('config', config)
-
   try {
     config.package = await getPackageJson(process.cwd())
   } catch (error) {}
@@ -139,10 +137,19 @@ async function getPackageJson (dir = process.cwd()) {
 }
 
 async function createDefaultFiles (config) {
+  try {
+    await fs.access(config.schemaConfigDirectory)
+    console.error(`Error: Schema directory already exists at ${config.schemaConfigDirectory}`)
+    process.exit(1)
+  } catch (error) {
+    // Directory doesn't exist, continue
+  }
+
   await fs.mkdir(config.schemaConfigDirectory, { recursive: true })
   await createConfigFile(config)
   await createFunctionsFile(config)
   await createSchemasFile(config)
+  await createIndexFile(config)
 }
 
 async function createConfigFile (config) {
@@ -155,6 +162,20 @@ async function createFunctionsFile (config) {
 
 async function createSchemasFile (config) {
   await fs.writeFile(config.schemasFilepath, templates.schemaFileTemplate)
+}
+
+async function createIndexFile (config) {
+  const indexFilepath = path.join(path.dirname(config.schemaConfigDirectory), 'index.js')
+
+  try {
+    await fs.access(indexFilepath)
+    console.error(`Error: Index file already exists at ${indexFilepath}`)
+    process.exit(1)
+  } catch (error) {
+    // Index file doesn't exist, continue
+  }
+
+  await fs.writeFile(indexFilepath, templates.indexFileTemplate)
 }
 
 function checkPackageDependencies (packageJson, requiredDependencies = []) {
