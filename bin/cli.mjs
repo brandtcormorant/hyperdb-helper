@@ -199,7 +199,9 @@ async function createSchemasFile (config) {
 
 async function createIndexFile (indexFilepath) {
   const definitionsFilepath = path.join(config.generatedDatabaseDirectory, 'index.js')
-  const content = templates.createIndexFileTemplate(definitionsFilepath)
+  const projectDirectory = path.dirname(config.schemaConfigDirectory);
+  const relativePath = path.relative(projectDirectory, definitionsFilepath);
+  const content = templates.createIndexFileTemplate(relativePath)
   await fs.writeFile(indexFilepath, content)
 }
 

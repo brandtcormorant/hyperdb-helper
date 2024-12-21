@@ -136,7 +136,7 @@ export const createIndexFileTemplate = (definitionFilepath) => dedent`
   const Corestore = require('corestore')
   const Hyperdb = require('hyperdb')
 
-  const definitions = require('${definitionFilepath}')
+  const definitions = require('./${definitionFilepath}')
 
   async function main () {
     const store = new Corestore('./db')
