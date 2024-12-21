@@ -168,11 +168,21 @@ async function createDefaultFiles (config) {
     // Directory doesn't exist, continue
   }
 
+  const indexFilepath = path.join(path.dirname(config.schemaConfigDirectory), 'index.js')
+
+  try {
+    await fs.access(indexFilepath)
+    console.error(`Error: Index file already exists at ${indexFilepath}`)
+    process.exit(1)
+  } catch (error) {
+    // Index file doesn't exist, continue
+  }
+
   await fs.mkdir(config.schemaConfigDirectory, { recursive: true })
   await createConfigFile(config)
   await createFunctionsFile(config)
   await createSchemasFile(config)
-  await createIndexFile(config)
+  await createIndexFile(indexFilepath)
 }
 
 async function createConfigFile (config) {
@@ -187,18 +197,10 @@ async function createSchemasFile (config) {
   await fs.writeFile(config.schemasFilepath, templates.schemaFileTemplate)
 }
 
-async function createIndexFile (config) {
-  const indexFilepath = path.join(path.dirname(config.schemaConfigDirectory), 'index.js')
-
-  try {
-    await fs.access(indexFilepath)
-    console.error(`Error: Index file already exists at ${indexFilepath}`)
-    process.exit(1)
-  } catch (error) {
-    // Index file doesn't exist, continue
-  }
-
-  await fs.writeFile(indexFilepath, templates.indexFileTemplate)
+async function createIndexFile (indexFilepath) {
+  const definitionsFilepath = path.join(config.generatedDatabaseDirectory, 'index.js')
+  const content = templates.createIndexFileTemplate(definitionsFilepath)
+  await fs.writeFile(indexFilepath, content)
 }
 
 function checkPackageDependencies (packageJson, requiredDependencies = []) {
