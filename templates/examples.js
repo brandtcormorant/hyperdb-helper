@@ -181,13 +181,13 @@ export const exampleIndexFileTemplate = ({ relativePath, moduleType }) => {
     // Query examples
 
     // Find all posts by a specific author
-    const postsByAuthor = await db.find('@example/by_author', {
+    const postsByAuthor = db.find('@example/by_author', {
       gte: { author: author.id },
       lte: { author: author.id }
     })
 
     // Get rid of those rants 😅
-    const tutorialPosts = await db.find('@example/by_type', {
+    const tutorialPosts = db.find('@example/by_type', {
       gte: { type: 'tutorial' },
       lte: { type: 'tutorial' }
     })
