@@ -51,9 +51,19 @@ After running the `hyperdb-helper init` command you'll get some examples to lear
 
 If you don't already have hyperdb and hyperschema installed you'll be asked to do so.
 
-## The work is never done, never forget
+## JavaScript API
 
-- by default run init without all the example code, provide --examples flag
-- make sure the build command isn't a leaky abstraction
-- make map & trigger examples
-- improve help cmd text
+There's also a very simple JavaScript API:
+
+```js
+import { HyperdbHelper } from 'hyperdb-helper';
+
+const helper = new HyperdbHelper();
+await helper.init();
+await helper.build();
+await helper.cleanup();
+```
+
+## License
+
+Apache-2.0
