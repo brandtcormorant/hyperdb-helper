@@ -6,7 +6,7 @@
     "fmt": "prettier . --write"
   },
   "bin": {
-    "hyperdb-helper": "bin/cli.mjs"
+    "hyperdb-helper": "bin/cli.js"
   },
   "type": "module",
   "repository": {
