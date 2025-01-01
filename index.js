@@ -235,9 +235,6 @@ export class HyperdbHelper {
       config.moduleType = config.package.type || 'commonjs'
     }
 
-    console.log('config.package.type', config.package.type)
-    console.log('config.moduleType', config.moduleType)
-
     return config
   }
 
