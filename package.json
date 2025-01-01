@@ -1,6 +1,6 @@
 {
   "name": "hyperdb-helper",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "A wee little helper cli for working with hyperdb schemas",
   "scripts": {
     "fmt": "prettier . --write"
