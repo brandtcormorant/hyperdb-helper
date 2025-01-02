@@ -56,12 +56,12 @@ If you don't already have hyperdb and hyperschema installed you'll be asked to d
 There's also a very simple JavaScript API:
 
 ```js
-import { HyperdbHelper } from 'hyperdb-helper';
+import { HyperdbHelper } from 'hyperdb-helper'
 
-const helper = new HyperdbHelper();
-await helper.init();
-await helper.build();
-await helper.cleanup();
+const helper = new HyperdbHelper()
+await helper.init()
+await helper.build()
+await helper.cleanup()
 ```
 
 ## License

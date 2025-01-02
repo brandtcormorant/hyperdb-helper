@@ -303,13 +303,12 @@ export class HyperdbHelper {
   }
 
   async createDatabaseConfigPackageJsonFile() {
-    const mainIndex = path.join(
-      this.config.databaseConfigDirectory,
-      'package.json'
-    )
-
-    const content = templates.packageJsonTemplate({
-      main: mainIndex,
+    const content = JSON.stringify({
+      main: './schema.js',
+      exports: {
+        '.': './schema.js',
+        './config': './config.js'
+      },
       type: 'module'
     })
 
@@ -317,10 +316,15 @@ export class HyperdbHelper {
   }
 
   async createGeneratedPackageJsonFile() {
-    const mainIndex = path.join(this.config.hyperdbDirectory, 'package.json')
-
-    const content = templates.packageJsonTemplate({
-      main: mainIndex,
+    const content = JSON.stringify({
+      main: './database/index.js',
+      exports: {
+        '.': './database/index.js',
+        './db.json': './database/db.json',
+        './messages': './database/messages.js',
+        './schemas': './schemas/index.js',
+        './schema.json': './schemas/schema.json'
+      },
       type: 'commonjs'
     })
 

@@ -1,14 +1,5 @@
 import dedent from 'string-dedent'
 
-export function packageJsonTemplate({ main, type }) {
-  return dedent`
-    {
-      "main": "${main}",
-      "type": "${type}"
-    }
-  `
-}
-
 export const configFileTemplate = () => {
   return dedent`
     export const config = {

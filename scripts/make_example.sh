@@ -20,7 +20,7 @@ echo '{
     "type": "'$MODULE_TYPE'",
     "scripts": {
         "build": "hyperdb-helper build"
-    },
+    }
 }' > package.json
 
 npm install hyperdb hyperschema corestore
