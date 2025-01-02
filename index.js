@@ -106,6 +106,8 @@ export class HyperdbHelper {
       this.config.schemaFilepath
     )
     await this.buildSchema(schemaDefinitions)
+    await this.createDatabaseConfigPackageJsonFile()
+    await this.createGeneratedPackageJsonFile()
   }
 
   /**
